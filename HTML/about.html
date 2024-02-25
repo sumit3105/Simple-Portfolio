@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>About</title>
+    <style>
+        /* internal css */
+        html{
+            scroll-behavior: smooth;
+        }
+        #toggle-btn {
+            background-color: azure;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+
+        #pice {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 3em;
+            height: 220px;
+            width: 350px;
+        }
+
+        .new {
+            height: 20px;
+            width: 30px;
+            transform: rotateX(30deg);
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: whitesmoke;
+            transition: background-color .5s;
+        }
+
+        .pagination a.active2 {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        .pagination a:hover:not(.active2) {
+            background-color: #ddd;
+        }
+
+        .pgcg {
+            background-color: aliceblue;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        #up {
+            float: right;
+            padding: 10px;
+            opacity: 0.5;
+        }
+
+        #up:hover {
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 900px) {
+            ul {
+                display: block;
+                position: relative;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                display: block;
+                float: none;
+                border-bottom: 1px solid #333;
+            }
+
+            li:last-child {
+                border-bottom: none;
+            }
+
+            li a {
+                display: block;
+                text-align: center;
+                padding: 8px;
+                font-family: "Sofia", sans-serif;
+            }
+
+            #toggle-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            footer {
+                height: 30px;
+                font-size: 12px;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pagination a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+    <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+</head>
+
+<body>
+    <script>
+        function changeTheme() {
+            var ele1 = document.body;
+            var ele2 = document.getElementById("pice");
+            var ele3 = document.getElementsByClassName("pg");
+            var ele4 = document.getElementsByClassName("pagination")[0];
+            ele1.classList.toggle("darkMode");
+            ele2.classList.toggle("borderChange");
+            ele3[0].classList.toggle("pgcg");
+            ele4.classList.toggle("pgcg");
+        }
+    </script>
+    <ul>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="hobby.html"><img src="../IMG/new3.png" alt="new" class="new">Photo Gallary</a></li>
+        <li><a href="home.html" target="_self">Home</a></li>
+        <li><a href="location.html">Fun</a></li>
+        <li><a href="knowledge.html">Knowledge Center</a></li>
+        <li><a href="puzzle.html">Puzzle</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="about.html" id="active">About</a></li>
+    </ul>
+    <button id="toggle-btn" onclick="changeTheme()">Change Theme</button>
+    <h1 id="pic">Profile Picture</h1>
+    <img src="../IMG/profile.JPG" alt="Profile Picture" id="pice">
+    <h1>Education & Qaulification</h1>
+    <div style="overflow-x: auto;">
+    <table id="table">
+        <tr>
+            <th id="acv" colspan="2">Academics</th>
+        </tr>
+        <tr>
+            <th>SSC</th>
+            <td>Madhavbaug Vidhyabhavan (88.89%)</td>
+        </tr>
+        <tr>
+            <th>HSC</th>
+            <td>Madhavbaug Vidhyabhavan (92%)</td>
+        </tr>
+        <tr>
+            <th>JEE MAINS(2022)</th>
+            <td>94.55 PR</td>
+        </tr>
+        <tr>
+            <th>GUJCET-2022</th>
+            <td>105.5/120</td>
+        </tr>
+        <tr>
+            <th>B.Tech (Computer Engineering)</th>
+            <td>Dharmsinh Desai University(Pursuing)</td>
+        </tr>
+    </table></div><br><br>
+    <table id="table">
+        <tr>
+            <th id="acv" colspan="2">Achievements</th>
+        </tr>
+        <tr>
+            <th>Hackerrank</th>
+            <td>3<span style="color:#fccf03;">&starf;</span> in C++
+                <br>2<span style="color:#fccf03;">&starf;</span> in C
+            </td>
+        </tr>
+        <tr>
+            <th>Codechef</th>
+            <td>1 <span style="color:#fccf03;">&starf;</span>
+                <br>Bronze Badge &#127941; (Problem Solving Skill)
+                <br>Bronze Badge &#127941; (Contest Calendar)
+                <br>Bronze Badge &#127941; (Daily Strike)
+            </td>
+        </tr>
+    </table>
+    <br><br><br>
+    <div class="pagination">
+        <a href="feedback.html" class="pg">&laquo;</a>
+        <a class="active2" href="about.html">1</a>
+        <a href="contactus.html" class="pg">2</a>
+        <a href="contact.html" class="pg">3</a>
+        <a href="puzzle.html" class="pg">4</a>
+        <a href="knowledge.html" class="pg">5</a>
+        <a href="location.html" class="pg">6</a>
+        <a href="home.html" class="pg">7</a>
+        <a href="hobby.html" class="pg">8</a>
+        <a href="feedback.html" class="pg">9</a>
+        <a href="contactus.html" class="pg">&raquo;</a>
+    </div>
+    <a href="#pic" id="scroll"><img src="../IMG/up.png" alt="Go to Top" height="50" width="50" id="up"></a>
+    <br><br><br><br><br>
+    <footer>
+        <p>&copy; 2023 My Website. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

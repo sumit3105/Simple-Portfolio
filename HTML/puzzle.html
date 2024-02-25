@@ -1,0 +1,230 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #2E3192, #1BFFFF);
+            font-family: "Sofia", sans-serif;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-family: "Sofia", sans-serif;
+        }
+
+        li a.active {
+            background-color: white;
+            color: black;
+            text-decoration: italic;
+        }
+
+        li a:hover {
+            background-color: white;
+            color: black;
+            text-decoration: underline;
+        }
+
+        #active {
+            background-color: white;
+            color: black;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 226px;
+            height: 300px;
+            background-color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: #333;
+        }
+
+        .container img {
+            width: 115px;
+            height: 150px;
+        }
+
+        .new {
+            height: 20px;
+            width: 30px;
+            transform: rotateX(30deg);
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: whitesmoke;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            transition: background-color .5s;
+        }
+
+        .pagination a.active2 {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        .pagination a:hover:not(.active2) {
+            background-color: #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        @media screen and (max-width: 900px) {
+            ul {
+                display: block;
+                position: relative;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                display: block;
+                float: none;
+                border-bottom: 1px solid #333;
+            }
+
+            li:last-child {
+                border-bottom: none;
+            }
+
+            li a {
+                display: block;
+                text-align: center;
+                padding: 8px;
+                font-family: "Sofia", sans-serif;
+            }
+
+            #toggle-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            footer {
+                height: 30px;
+                font-size: 12px;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pagination a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+    <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+</head>
+
+<body>
+    <ul>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="hobby.html"><img src="../IMG/new3.png" alt="new" class="new"> Photo Gallary</a></li>
+        <li><a href="home.html" target="_self">Home</a></li>
+        <li><a href="location.html">Fun</a></li>
+        <li><a href="knowledge.html">Knowledge Center</a></li>
+        <li><a href="puzzle.html" id="active">Puzzle</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+    <center>
+        <h1>Solve Jigsaw puzzle....</h1>
+    </center>
+    <div class="container">
+        <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)" id="b1"></div>
+        <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)" id="b2"></div>
+        <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)" id="b3"></div>
+        <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)" id="b4"></div>
+    </div>
+    <div class="container">
+        <div class="box"><img src="../IMG/image_part_002.jpg" draggable="true" ondragstart="drag(event)" id="i1"></div>
+        <div class="box"><img src="../IMG/image_part_004.jpg" draggable="true" ondragstart="drag(event)" id="i2"></div>
+        <div class="box"><img src="../IMG/image_part_001.jpg" draggable="true" ondragstart="drag(event)" id="i3"></div>
+        <div class="box"><img src="../IMG/image_part_003.jpg" draggable="true" ondragstart="drag(event)" id="i4"></div>
+    </div>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script><br><br><br><br><br>
+    <div class="pagination">
+        <a href="contact.html" class="pg">&laquo;</a>
+        <a class="pg" href="about.html">1</a>
+        <a href="contactus.html" class="pg">2</a>
+        <a href="contact.html" class="pg">3</a>
+        <a href="puzzle.html" class="active2">4</a>
+        <a href="knowledge.html" class="pg">5</a>
+        <a href="location.html" class="pg">6</a>
+        <a href="home.html" class="pg">7</a>
+        <a href="hobby.html" class="pg">8</a>
+        <a href="feedback.html" class="pg">9</a>
+        <a href="knowledge.html" class="pg">&raquo;</a>
+    </div><br><br><br>
+    <footer>
+        <p>&copy; 2023 My Website. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

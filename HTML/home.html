@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <title>Home</title>
+    <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    body::before {
+        content: "";
+        background-image: url('../IMG/bg.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+    }
+
+
+    #para {
+        margin: 150px 50px 0 50px;
+        text-indent: 4px;
+        line-height: 50px;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: "Trirong", serif;
+        text-shadow: 4px 4px 4px #ababab;
+    }
+
+    h1 {
+        margin: 75px auto;
+        border-bottom: 2px solid rgb(0, 0, 0);
+        font-family: "Sofia", sans-serif;
+        text-shadow: 3px 3px 3px #ababab;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+    }
+
+    li {
+        float: right;
+    }
+
+    #active {
+        background-color: white;
+        color: black;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+        font-family: "Sofia", sans-serif;
+    }
+
+    li a:hover {
+        background-color: white;
+        color: black;
+        text-decoration: underline;
+    }
+
+    .new {
+        height: 20px;
+        width: 30px;
+        transform: rotateX(30deg);
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        background-color: whitesmoke;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 16px;
+        transition: background-color .5s;
+    }
+
+    .pagination a.active2 {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .pagination {
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+    }
+
+    .pagination a:hover:not(.active2) {
+        background-color: #ddd;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 1200px) {
+        #para {
+            margin: 50px;
+        }
+
+        h1 {
+            margin: 50px auto;
+        }
+
+        .pagination {
+            width: 60%;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        #para {
+            margin: 50px;
+        }
+
+        h1 {
+            margin: 50px auto;
+        }
+
+        ul {
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: block;
+            float: none;
+            border-bottom: 1px solid #333;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li a {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            font-family: "Sofia", sans-serif;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        #para {
+            margin: 20px;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        h1 {
+            margin: 30px auto;
+            font-size: 24px;
+        }
+
+        ul li a {
+            padding: 12px;
+        }
+
+        .pagination {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <ul>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="hobby.html"><img src="../IMG/new3.png" alt="new" class="new"> Photo Gallary</a></li>
+        <li><a href="home.html" target="_self" id="active">Home</a></li>
+        <li><a href="location.html">Fun</a></li>
+        <li><a href="knowledge.html">Knowledge Center</a></li>
+        <li><a href="puzzle.html">Puzzle</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <h1>Indroduction About Myself</h1>
+    <p id="para"><i>" Hello Everyone, I am Sumit J. Gohil from Surat.I completed my schools from my hometown surat .I
+            has got 105.5 marks in gujcet and 94.54 pr in JEE MAINS(2022)
+            Examination and currently pursuing my B.Tech Computer Engineering degree from Dharmsinh Desai University.I
+            am now in 2<sup>nd</sup> Semester
+            of my bachelor degree.I am interested in work on web development as a frontend developer.i play sports very
+            much and listen to music.
+            i also has completed C programing language and currently i am focusing on C++ language and as a part time i
+            am also
+            focusing on php,html & css languages. "</i>
+    </p><br><br><br><br><br><br><br>
+    <div class="pagination">
+        <a href="location.html" class="pg">&laquo;</a>
+        <a class="pg" href="about.html">1</a>
+        <a href="contactus.html" class="pg">2</a>
+        <a href="contact.html" class="pg">3</a>
+        <a href="puzzle.html" class="pg">4</a>
+        <a href="knowledge.html" class="pg">5</a>
+        <a href="location.html" class="pg">6</a>
+        <a href="home.html" class="active2">7</a>
+        <a href="hobby.html" class="pg">8</a>
+        <a href="feedback.html" class="pg">9</a>
+        <a href="hobby.html" class="pg">&raquo;</a>
+    </div><br><br><br>
+    <footer>
+        <p>&copy; 2023 My Website. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

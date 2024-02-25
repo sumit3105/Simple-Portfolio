@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+  <title>Photo Gallary | Hobbies</title>
+  <style>
+    body {
+      background-image: radial-gradient(#79fc0d, #fbff1f);
+      font-family: "Sofia", sans-serif;
+    }
+
+    .nav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+    }
+
+    .list {
+      float: right;
+    }
+
+    .list a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+      font-family: "Sofia", sans-serif;
+    }
+
+    .list a.active {
+      background-color: white;
+      color: black;
+      text-decoration: italic;
+    }
+
+    .list a:hover {
+      background-color: white;
+      color: black;
+      text-decoration: underline;
+    }
+
+    #active {
+      background-color: white;
+      color: black;
+    }
+
+    .new {
+      height: 20px;
+      width: 30px;
+      transform: rotateX(30deg);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .slideshow-container {
+      max-width: 600px;
+      position: relative;
+      margin: auto;
+      border: 3px black inset;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .5
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .part {
+      list-style-type: none;
+    }
+
+    .box {
+      border: 2px inset #333333;
+      background-color: whitesmoke;
+      max-width: 450px;
+      border-radius: 0em 2.5em;
+    }
+
+    .text {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .content {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 1.1em;
+      line-height: 25px;
+      text-align: left;
+      padding: 2px;
+    }
+
+    h5 {
+      margin-right: 20%;
+      text-align: right;
+      font-size: 1.4em;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      background-color: whitesmoke;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 16px;
+      transition: background-color .5s;
+    }
+
+    .pagination a.active2 {
+      background-color: dodgerblue;
+      color: white;
+    }
+
+    .pagination {
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 50px;
+    }
+
+    .pagination a:hover:not(.active2) {
+      background-color: #ddd;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    @media screen and (max-width: 900px) {
+      .nav {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+      .list {
+        display: block;
+        float: none;
+        border-bottom: 1px solid #333;
+      }
+
+      .list:last-child {
+        border-bottom: none;
+      }
+
+      .list a {
+        display: block;
+        text-align: center;
+        padding: 8px;
+        font-family: "Sofia", sans-serif;
+      }
+
+      footer {
+        height: 30px;
+        font-size: 12px;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pagination a {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="nav">
+    <li class="list"><a href="feedback.html">Feedback</a></li>
+    <li class="list"><a href="hobby.html" id="active"><img src="../IMG/new3.png" alt="new" class="new"> Photo Gallary</a></li>
+    <li class="list"><a href="home.html" target="_self">Home</a></li>
+    <li class="list"><a href="location.html">Fun</a></li>
+    <li class="list"><a href="knowledge.html">Knowledge Center</a></li>
+    <li class="list"><a href="puzzle.html">Puzzle</a></li>
+    <li class="list"><a href="contact.html">Contact</a></li>
+    <li class="list"><a href="contactus.html">Contact Us</a></li>
+    <li class="list"><a href="about.html">About</a></li>
+  </ul>
+  <center>
+    <h1 class="text">Hobbies...</h1>
+  </center>
+  <center>
+    <div class="box">
+      <ul class="part">
+        <li class="content">Favourite Songs :- Bollywood Songs</li>
+        <li class="content">Favourite Sports :- Cricket</li>
+        <li class="content">Favourite Festival :- Diwali</li>
+      </ul>
+    </div>
+  </center>
+  <h5>- "Everyday is a Second Chance!..."</h5>
+  <center>
+    <h1 class="text">Beauty of Nature...</h1>
+  </center>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="../IMG/img1.jpeg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="../IMG/img2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="../IMG/img3.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="../IMG/img4.jpg" style="width:100%">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div><br>
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div><br><br><br><br>
+  <div class="pagination">
+    <a href="home.html" class="pg">&laquo;</a>
+    <a class="pg" href="about.html">1</a>
+    <a href="contactus.html" class="pg">2</a>
+    <a href="contact.html" class="pg">3</a>
+    <a href="puzzle.html" class="pg">4</a>
+    <a href="knowledge.html" class="pg">5</a>
+    <a href="location.html" class="pg">6</a>
+    <a href="home.html" class="pg">7</a>
+    <a href="hobby.html" class="active2">8</a>
+    <a href="feedback.html" class="pg">9</a>
+    <a href="feedback.html" class="pg">&raquo;</a>
+  </div><br><br><br>
+  <footer>
+    <p>&copy; 2023 My Website. All Rights Reserved.</p>
+  </footer>
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+</body>
+
+</html>

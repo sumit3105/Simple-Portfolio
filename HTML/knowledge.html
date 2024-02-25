@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <title>Knowledge Center</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-image: linear-gradient(to right, #3498db, #8e44ad);
+            font-family: "Sofia", sans-serif;
+            color: white;
+        }
+
+        .nav1 {
+            /* position: -webkit-sticky; */
+            position: sticky;
+            top: 0;
+        }
+
+        .nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+            position: sticky;
+        }
+
+        .list {
+            float: right;
+        }
+
+        .list a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-family: "Sofia", sans-serif;
+        }
+
+        .list a.active {
+            background-color: white;
+            color: black;
+            text-decoration: italic;
+        }
+
+        .list a:hover {
+            background-color: white;
+            color: black;
+            text-decoration: underline;
+        }
+
+        #active {
+            background-color: white;
+            color: black;
+        }
+
+        .new {
+            height: 20px;
+            width: 30px;
+            transform: rotateX(30deg);
+        }
+
+        h2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        p {
+            padding-bottom: 10px;
+        }
+
+        .d1 {
+            text-decoration: none;
+            color: aliceblue;
+            padding: 5px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .d1:hover {
+            text-decoration: underline;
+        }
+
+        #data {
+            background-color: #777;
+            color: aliceblue;
+            max-width: 250px;
+        }
+
+        .li {
+            padding: 5px;
+        }
+
+        #page {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: whitesmoke;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            transition: background-color .5s;
+        }
+
+        .pagination a.active2 {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        .pagination a:hover:not(.active2) {
+            background-color: #ddd;
+        }
+
+        #up {
+            float: right;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        @media screen and (max-width: 900px) {
+            .nav {
+                display: block;
+                position: relative;
+                margin: 0;
+                padding: 0;
+            }
+
+            .list {
+                display: block;
+                float: none;
+                border-bottom: 1px solid #333;
+            }
+
+            .list:last-child {
+                border-bottom: none;
+            }
+
+            .list a {
+                display: block;
+                text-align: center;
+                padding: 8px;
+                font-family: "Sofia", sans-serif;
+            }
+
+            footer {
+                height: 30px;
+                font-size: 12px;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pagination a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav1">
+        <ul class="nav">
+            <li class="list"><a href="feedback.html">Feedback</a></li>
+            <li class="list"><a href="hobby.html"><img src="../IMG/new3.png" alt="new" class="new"> Photo Gallary</a></li>
+            <li class="list"><a href="home.html" target="_self">Home</a></li>
+            <li class="list"><a href="location.html">Fun</a></li>
+            <li class="list"><a href="knowledge.html" id="active">Knowledge Center</a></li>
+            <li class="list"><a href="puzzle.html">Puzzle</a></li>
+            <li class="list"><a href="contact.html">Contact</a></li>
+            <li class="list"><a href="contactus.html">Contact Us</a></li>
+            <li class="list"><a href="about.html">About</a></li>
+        </ul>
+    </div>
+    <h3 id="page">Page Contains:</h3>
+    <ul id="data">
+        <li class="li"><a href="#ai" class="d1">Artificial Intelligence (AI)</a></li>
+        <li class="li"><a href="#sd" class="d1">Smart Devices</a></li>
+        <li class="li"><a href="#iot" class="d1">IoT(Internet of Things)</a></li>
+    </ul>
+    <h2 id="title"><i><u>Information about new Technology</u> :- </i></h2>
+    <h2 id="ai">Artificial Intelligence (AI)</h2>
+    <button class="accordion">What it is ?</button>
+    <div class="panel">
+        <p>Artificial intelligence (AI) is intelligence—perceiving, synthesizing, and inferring information—demonstrated
+            by machines, as opposed to intelligence displayed by non-human animals or by humans. Example tasks in which
+            this is done include speech recognition, computer vision, translation between (natural) languages, as well
+            as other mappings of inputs.
+            AI applications include advanced web search engines (e.g., Google Search), recommendation systems (used by
+            YouTube, Amazon, and Netflix), understanding human speech (such as Siri and Alexa), self-driving cars (e.g.,
+            Waymo), generative or creative tools (ChatGPT and AI art), automated decision-making, and competing at the
+            highest level in strategic game systems (such as chess and Go).
+            As machines become increasingly capable, tasks considered to require "intelligence" are often removed from
+            the definition of AI, a phenomenon known as the AI effect. For instance, optical character recognition is
+            frequently excluded from things considered to be AI, having become a routine technology.
+        </p>
+    </div>
+
+    <button class="accordion">History</button>
+    <div class="panel">
+        <p>Artificial beings with intelligence appeared as storytelling devices in antiquity, and have been common in
+            fiction, as in Mary Shelley's Frankenstein or Karel Čapek's R.U.R. These characters and their fates raised
+            many of the same issues now discussed in the ethics of artificial intelligence.
+            The study of mechanical or "formal" reasoning began with philosophers and mathematicians in antiquity. The
+            study of mathematical logic led directly to Alan Turing's theory of computation, which suggested that a
+            machine, by shuffling symbols as simple as "0" and "1", could simulate any conceivable act of mathematical
+            deduction. This insight that digital computers can simulate any process of formal reasoning is known as the
+            Church Turing thesis. This, along with concurrent discoveries in neurobiology, information theory and
+            cybernetics, led researchers to consider the possibility of building an electronic brain. The first work
+            that is now generally recognized as AI was McCullouch and Pitts' 1943 formal design for Turing-complete
+            "artificial neurons".</p>
+        <p>
+            By the 1950s, two visions for how to achieve machine intelligence emerged. One vision, known as Symbolic AI
+            or GOFAI, was to use computers to create a symbolic representation of the world and systems that could
+            reason about the world. Proponents included Allen Newell, Herbert A. Simon, and Marvin Minsky. Closely
+            associated with this approach was the "heuristic search" approach, which likened intelligence to a problem
+            of exploring a space of possibilities for answers.
+            The second vision, known as the connectionist approach, sought to achieve intelligence through learning.
+            Proponents of this approach, most prominently Frank Rosenblatt, sought to connect Perceptron in ways
+            inspired by connections of neurons. James Manyika and others have compared the two approaches to the mind
+            (Symbolic AI) and the brain (connectionist). Manyika argues that symbolic approaches dominated the push for
+            artificial intelligence in this period, due in part to its connection to intellectual traditions of
+            Descartes, Boole, Gottlob Frege, Bertrand Russell, and others. Connectionist approaches based on cybernetics
+            or artificial neural networks were pushed to the background but have gained new prominence in recent
+            decades.
+            The field of AI research was born at a workshop at Dartmouth College in 1956. The attendees became the
+            founders and leaders of AI research. They and their students produced programs that the press described as
+            "astonishing": computers were learning checkers strategies, solving word problems in algebra, proving
+            logical theorems and speaking English.
+            By the middle of the 1960s, research in the U.S. was heavily funded by the Department of Defense and
+            laboratories had been established around the world.
+            Researchers in the 1960s and the 1970s were convinced that symbolic approaches would eventually succeed in
+            creating a machine with artificial general intelligence and considered this the goal of their field. Herbert
+            Simon predicted, "machines will be capable, within twenty years, of doing any work a man can do". Marvin
+            Minsky agreed, writing, "within a generation ... the problem of creating 'artificial intelligence' will
+            substantially be solved".
+            They had failed to recognize the difficulty of some of the remaining tasks. Progress slowed and in 1974, in
+            response to the criticism of Sir James Lighthill and ongoing pressure from the US Congress to fund more
+            productive projects, both the U.S. and British governments cut off exploratory research in AI. The next few
+            years would later be called an "AI winter", a period when obtaining funding for AI projects was difficult.
+        </p>
+    </div>
+
+    <button class="accordion">Applications</button>
+    <div class="panel">
+        <p>
+            AI is relevant to any intellectual task. Modern artificial intelligence techniques are pervasive and are too
+            numerous to list here. Frequently, when a technique reaches mainstream use, it is no longer considered
+            artificial intelligence; this phenomenon is described as the AI effect.
+            In the 2010s, AI applications were at the heart of the most commercially successful areas of computing, and
+            have become a ubiquitous feature of daily life. AI is used in search engines (such as Google Search),
+            targeting online advertisements, recommendation systems (offered by Netflix, YouTube or Amazon), driving
+            internet traffic, targeted advertising (AdSense, Facebook), virtual assistants (such as Siri or Alexa),
+            autonomous vehicles (including drones, ADAS and self-driving cars), automatic language translation
+            (Microsoft Translator, Google Translate), facial recognition (Apple's Face ID or Microsoft's DeepFace),
+            image labeling (used by Facebook, Apple's iPhoto and TikTok) , spam filtering and chatbots (such as Chat
+            GPT).</p>
+        <p>
+            There are also thousands of successful AI applications used to solve problems for specific industries or
+            institutions. A few examples are energy storage, deepfakes, medical diagnosis, military logistics, foreign
+            policy, or supply chain management.
+            Game playing has been a test of AI's strength since the 1950s. Deep Blue became the first computer
+            chess-playing system to beat a reigning world chess champion, Garry Kasparov, on 11 May 1997. In 2011, in a
+            Jeopardy! quiz show exhibition match, IBM's question answering system, Watson, defeated the two greatest
+            Jeopardy! champions, Brad Rutter and Ken Jennings, by a significant margin. In March 2016, AlphaGo won 4 out
+            of 5 games of Go in a match with Go champion Lee Sedol, becoming the first computer Go-playing system to
+            beat a professional Go player without handicaps. Other programs handle imperfect-information games; such as
+            for poker at a superhuman level, Pluribus and Cepheus. DeepMind in the 2010s developed a "generalized
+            artificial intelligence" that could learn many diverse Atari games on its own.
+            By 2020, Natural Language Processing systems such as the enormous GPT-3 (then by far the largest artificial
+            neural network) were matching human performance on pre-existing benchmarks, albeit without the system
+            attaining a commonsense understanding of the contents of the benchmarks. DeepMind's AlphaFold 2 (2020)
+            demonstrated the ability to approximate, in hours rather than months, the 3D structure of a protein. Other
+            applications predict the result of judicial decisions, create art (such as poetry or painting) and prove
+            mathematical theorems.
+        </p>
+    </div>
+
+    <h2 id="sd">Smart Devices</h2>
+    <button class="accordion">What it is ?</button>
+    <div class="panel">
+        <p>
+            A smart device is an electronic device, generally connected to other devices or networks via different
+            wireless protocols (such as Bluetooth, Zigbee, near-field communication, Wi-Fi, LiFi, or 5G) that can
+            operate to some extent interactively and autonomously. Several notable types of smart devices are
+            smartphones, smart speakers, smart cars, smart thermostats, smart doorbells, smart locks, smart
+            refrigerators, phablets and tablets, smartwatches, smart bands, smart keychains, smart glasses, and many
+            others. The term can also refer to a device that exhibits some properties of ubiquitous computing,
+            including—although not necessarily—machine learning.
+            Smart devices can be designed to support a variety of form factors, a range of properties pertaining to
+            ubiquitous computing and to be used in three main system environments: physical world, human-centered
+            environments, and distributed computing environments. Smart homes indicate the presence of sensors and some
+            detection devices, appliances, and a database to control them.
+        </p>
+    </div>
+
+    <button class="accordion">Form factors</button>
+    <div class="panel">
+        <p>
+            In 1991 Mark Weiser proposed three basic forms for ubiquitous system devices: tabs, pads and boards. <br>
+        <ul>
+            <li><b>Tabs</b>: accompanied or wearable centimetre sized devices, e.g., smartphones, smart cards</li>
+            <li><b>Pads</b>: hand-held decimetre-sized devices, e.g., laptops</li>
+            <li><b>Boards</b>: meter sized interactive display devices, e.g., horizontal surface computers and vertical
+                SMART boards.</li>
+        </ul><br>
+        These three forms proposed by Weiser are characterized by being macro-sized, having a planar form and by
+        incorporating visual output displays. These were also envisioned more as information appliances. If each of
+        these three characteristics is relaxed, this range can be expanded into a much more diverse and potentially more
+        useful range of ubiquitous computing devices.
+        </p>
+    </div>
+
+    <button class="accordion">Characteristics</button>
+    <div class="panel">
+        <p>
+            Smart devices are typically composed of a hardware layer (including a radio that transmits signals), a
+            network layer (through which devices communicate with each other), and an application layer (through which
+            end users deliver commands). These layers often include the following characteristics:
+        <ul>
+            <li>A set of system hardware & software IT resources. This set is usually static, fixed at design time.</li>
+            <li>Dynamic component-oriented resource extensions & plug-ins (plug and play) of some hardware resources.
+            </li>
+            <li>Remote external service access and execution.</li>
+            <li>Local, internal autonomous service execution.</li>
+            <li>Access to specific external environments: human interaction, physical world interaction and distributed
+                ICT / virtual computing interaction.</li>
+            <li>Some ubiquitous computing properties.</li>
+        </ul>
+        Common types of smart devices include:
+        <ul>
+            <li>Tab and pad type smart devices that often act as personalized smart mobile devices</li>
+            <li>Smart environment devices.</li>
+        </ul>
+        </p>
+    </div>
+    <button class="accordion">Environments</button>
+    <div class="panel">
+        <p>
+            The term smart device environments has two meanings. First, it can refer to a greater variety of device
+            environments. Three different kinds of environments for devices can be differentiated:
+        <ul>
+            <li>Virtual computing environments that enable smart devices to access pertinent services anywhere and
+                anytime.</li>
+            <li>Physical environments that may be embedded with a variety of smart devices of different types including
+                tags, sensors and controllers. These can have different form factors ranging from nano to micro to macro
+                sized.</li>
+            <li>Humans environments: humans, either individually or collectively, inherently form a smart environment
+                for devices. However, humans may themselves be accompanied by smart devices such as mobile phones, use
+                surface-mounted devices (wearable computing) and contain embedded devices (e.g., pacemakers to maintain
+                a healthy heart operation).</li>
+        </ul>
+        Second, the term smart device environments can also refer to the concept of a smart environment which focuses
+        more specifically on the physical environment of the device. The physical environment is smart because it is
+        embedded or scattered with smart devices that can sense and control part of it.
+        </p>
+    </div>
+
+    <h2 id="iot">IoT(Internet of Things)</h2>
+    <button class="accordion">What it is ?</button>
+    <div class="panel">
+        <p>
+            The Internet of things (IoT) describes physical objects (or groups of such objects) with sensors, processing
+            ability, software and other technologies that connect and exchange data with other devices and systems over
+            the Internet or other communications networks. Internet of things has been considered a misnomer because
+            devices do not need to be connected to the public internet, they only need to be connected to a network, and
+            be individually addressable.</p>
+        <p>
+            The field has evolved due to the convergence of multiple technologies, including ubiquitous computing,
+            commodity sensors, increasingly powerful embedded systems, as well as machine learning. Traditional fields
+            of embedded systems, wireless sensor networks, control systems, automation (including home and building
+            automation), independently and collectively enable the Internet of things. In the consumer market, IoT
+            technology is most synonymous with products pertaining to the concept of the "smart home", including devices
+            and appliances (such as lighting fixtures, thermostats, home security systems, cameras, and other home
+            appliances) that support one or more common ecosystems, and can be controlled via devices associated with
+            that ecosystem, such as smartphones and smart speakers. IoT is also used in healthcare systems.
+            There are a number of concerns about the risks in the growth of IoT technologies and products, especially in
+            the areas of privacy and security, and consequently, industry and governmental moves to address these
+            concerns have begun, including the development of international and local standards, guidelines, and
+            regulatory frameworks.
+        </p>
+    </div>
+
+    <button class="accordion">History</button>
+    <div class="panel">
+        <p>
+            The main concept of a network of smart devices was discussed as early as 1982, with a modified Coca-Cola
+            vending machine at Carnegie Mellon University becoming the first ARPANET-connected appliance, able to report
+            its inventory and whether newly loaded drinks were cold or not. Mark Weiser's 1991 paper on ubiquitous
+            computing, "The Computer of the 21st Century", as well as academic venues such as UbiComp and PerCom
+            produced the contemporary vision of the IOT. In 1994, Reza Raji described the concept in IEEE Spectrum as "
+            small packets of data to a large set of nodes, so as to integrate and automate everything from home
+            appliances to entire factories". Between 1993 and 1997, several companies proposed solutions like
+            Microsoft's at Work or Novell's NEST. The field gained momentum when Bill Joy envisioned device-to-device
+            communication as a part of his "Six Webs" framework, presented at the World Economic Forum at Davos in 1999.
+            The concept of the "Internet of things" and the term itself, first appeared in a speech by Peter T. Lewis,
+            to the Congressional Black Caucus Foundation 15th Annual Legislative Weekend in Washington, D.C., published
+            in September 1985. According to Lewis, "The Internet of Things, or IoT, is the integration of people,
+            processes and technology with connectable devices and sensors to enable remote monitoring, status,
+            manipulation and evaluation of trends of such devices."
+        </p>
+    </div>
+
+    <button class="accordion">Applications</button>
+    <div class="panel">
+        <p>
+        <h3>Consumers</h3>
+        A growing portion of IoT devices is created for consumer use, including connected vehicles, home automation,
+        wearable technology, connected health, and appliances with remote monitoring capabilities.
+        <br>
+        <h3>Home automation</h3>
+        IoT devices are a part of the larger concept of home automation, which can include lighting, heating and air
+        conditioning, media and security systems and camera systems. Long-term benefits could include energy savings by
+        automatically ensuring lights and electronics are turned off or by making the residents in the home aware of
+        usage.
+        A smart home or automated home could be based on a platform or hubs that control smart devices and appliances.
+        For instance, using Apple's HomeKit, manufacturers can have their home products and accessories controlled by an
+        application in iOS devices such as the iPhone and the Apple Watch. This could be a dedicated app or iOS native
+        applications such as Siri. This can be demonstrated in the case of Lenovo's Smart Home Essentials, which is a
+        line of smart home devices that are controlled through Apple's Home app or Siri without the need for a Wi-Fi
+        bridge. There are also dedicated smart home hubs that are offered as standalone platforms to connect different
+        smart home products and these include the Amazon Echo, Google Home, Apple's HomePod, and Samsung's SmartThings
+        Hub. In addition to the commercial systems, there are many non-proprietary, open source ecosystems; including
+        Home Assistant, OpenHAB and Domoticz.
+        <br>
+        <h3>Elder care</h3>
+        One key application of a smart home is to provide assistance to elderly individuals and to those with
+        disabilities. These home systems use assistive technology to accommodate an owner's specific disabilities. Voice
+        control can assist users with sight and mobility limitations while alert systems can be connected directly to
+        cochlear implants worn by hearing-impaired users. They can also be equipped with additional safety features,
+        including sensors that monitor for medical emergencies such as falls or seizures. Smart home technology applied
+        in this way can provide users with more freedom and a higher quality of life.
+        <br>
+        <h3>Organizations</h3>
+        The term "Enterprise IoT" refers to devices used in business and corporate settings. By 2019, it is estimated
+        that the EIoT will account for 9.1 billion devices.
+        </p>
+    </div><br><br><br><br>
+    <a href="#title" id="scroll"><img src="../IMG/up.png" alt="Go to Top" height="50" width="50" id="up"></a><br><br><br>
+    <div class="pagination">
+        <a href="puzzle.html" class="pg">&laquo;</a>
+        <a class="pg" href="about.html">1</a>
+        <a href="contactus.html" class="pg">2</a>
+        <a href="contact.html" class="pg">3</a>
+        <a href="puzzle.html" class="pg">4</a>
+        <a href="knowledge.html" class="active2">5</a>
+        <a href="location.html" class="pg">6</a>
+        <a href="home.html" class="pg">7</a>
+        <a href="hobby.html" class="pg">8</a>
+        <a href="feedback.html" class="pg">9</a>
+        <a href="location.html" class="pg">&raquo;</a>
+    </div>
+    <br><br><br><br>
+    <footer>
+        <p>&copy; 2023 My Website. All Rights Reserved.</p>
+    </footer>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

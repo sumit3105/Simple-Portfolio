@@ -1,0 +1,282 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun</title>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, #79fc0d, #fbff1f);
+            font-family: "Sofia", sans-serif;
+            color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333333;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-family: "Sofia", sans-serif;
+        }
+
+        li a.active {
+            background-color: white;
+            color: black;
+            text-decoration: italic;
+        }
+
+        li a:hover {
+            background-color: white;
+            color: black;
+            text-decoration: underline;
+        }
+
+        #active {
+            background-color: white;
+            color: black;
+        }
+
+        button {
+            background: transparent;
+            font-size: medium;
+            height: 50px;
+            width: 120px;
+            align-items: center;
+            font-family: "Sofia", sans-serif;
+        }
+
+        p {
+            font-size: xx-large;
+        }
+
+        #demo,
+        #demo2 {
+            font-size: large;
+        }
+
+        .new {
+            height: 20px;
+            width: 30px;
+            transform: rotateX(30deg);
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: whitesmoke;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+            transition: background-color .5s;
+        }
+
+        .pagination a.active2 {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .pagination {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        .pagination a:hover:not(.active2) {
+            background-color: #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        footer p {
+            font-size: 15px;
+        }
+
+        h2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-decoration: underline dotted;
+        }
+
+        @media screen and (max-width: 900px) {
+            ul {
+                display: block;
+                position: relative;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                display: block;
+                float: none;
+                border-bottom: 1px solid #333;
+            }
+
+            li:last-child {
+                border-bottom: none;
+            }
+
+            li a {
+                display: block;
+                text-align: center;
+                padding: 8px;
+                font-family: "Sofia", sans-serif;
+            }
+
+            #toggle-btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+
+            footer {
+                height: 30px;
+                font-size: 12px;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pagination a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .video {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="shortcut icon" href="../IMG/mlgo.png" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="hobby.html"><img src="../IMG/new3.png" alt="new" class="new"> Photo Gallary</a></li>
+            <li><a href="home.html" target="_self">Home</a></li>
+            <li><a href="location.html" id="active">Fun</a></li>
+            <li><a href="knowledge.html">Knowledge Center</a></li>
+            <li><a href="puzzle.html">Puzzle</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <main>
+        <center>
+            <p>Click the button to get your coordinates.</p>
+        </center>
+
+        <center><button onclick="getLocation()">Click Here!</button></center>
+        <center>
+            <p id="demo"></p>
+        </center>
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition, showError);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Your Latitude: " + position.coords.latitude +
+                    "<br>Your Longitude: " + position.coords.longitude;
+            }
+
+            function showError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "User denied the request for Geolocation."
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "Location information is unavailable."
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "The request to get user location timed out."
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "An unknown error occurred."
+                        break;
+                }
+            }
+        </script>
+        <center>
+            <p>Click the button to get my location.</p>
+        </center>
+
+        <center><button onclick="getMyLocation()">Click Here!</button></center>
+        <center>
+            <p id="demo2"></p>
+        </center>
+        <script>
+            var y = document.getElementById("demo2");
+            function getMyLocation() {
+                y.innerHTML = "My Location : <br>My Latitude : 23.0555648 <br>My Longitude : 72.5712896";
+            }
+        </script><br><br><br>
+        <center>
+            <h2>About HTML Geolocation API</h2>
+        </center>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/bJWUDpjTgOk"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </center>
+
+    </main>
+    <br><br><br><br><br><br><br><br><br>
+    <aside>
+        <div class="pagination">
+            <a href="knowledge.html" class="pg">&laquo;</a>
+            <a class="pg" href="about.html">1</a>
+            <a href="contactus.html" class="pg">2</a>
+            <a href="contact.html" class="pg">3</a>
+            <a href="puzzle.html" class="pg">4</a>
+            <a href="knowledge.html" class="pg">5</a>
+            <a href="location.html" class="active2">6</a>
+            <a href="home.html" class="pg">7</a>
+            <a href="hobby.html" class="pg">8</a>
+            <a href="feedback.html" class="pg">9</a>
+            <a href="home.html" class="pg">&raquo;</a>
+        </div>
+    </aside>
+    <br><br><br>
+    <footer>
+        <p>&copy; 2023 My Website. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
